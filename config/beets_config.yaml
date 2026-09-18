@@ -1,0 +1,37 @@
+directory: /mnt/music/library
+library: ~/.config/beets/musiclibrary.db
+
+import:
+  write: yes
+  copy: no
+  move: yes
+  autotag: yes
+  quiet: yes
+  timid: no
+  resume: yes
+  incremental: no
+  duplicate_action: skip
+  quiet_fallback: asis
+  bell: no
+  log: ~/.config/beets/import.log
+
+plugins: fetchart embedart duplicates
+
+fetchart:
+  auto: yes
+  minwidth: 500
+  maxwidth: 1400
+  sources: filesystem coverart itunes
+
+embedart:
+  auto: yes
+  ifunset: yes
+  remove_art_file: no
+
+duplicates:
+  checksum: yes
+
+paths:
+  default: $albumartist/$album%aunique{}/%if{$multidisc,$disc-}$track - $title
+  singleton: $albumartist/$album%aunique{}/%if{$multidisc,$disc-}$track - $title
+  comp: Compilations/$album%aunique{}/%if{$multidisc,$disc-}$track - $title

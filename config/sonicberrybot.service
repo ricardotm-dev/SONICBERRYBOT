@@ -1,0 +1,15 @@
+[Unit]
+Description=Sonicberry Telegram Music Bot
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=ricardoom
+WorkingDirectory=/home/ricardoom
+ExecStart=/usr/bin/python3 /home/ricardoom/sonicberrybot.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
